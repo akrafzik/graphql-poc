@@ -1,1 +1,1 @@
-# graphqa-poc
+# graphql-poc
