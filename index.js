@@ -1,12 +1,18 @@
 const { ApolloServer, gql } = require('apollo-server');
-const employees = require("@jsdevtools/static-mock-data/employees.json");
+const EmployeeService = require('./datasource/file');
 
 const typeDefs = gql`
     type Query {
-        employees: [Employee]
+        employees(        
+            username: String,
+            gender: String,
+            email: String,
+            department: String,
+            roles: [String]
+            ): [Employee],
+        findEmployeeByEmail(email: String): Employee
     }
     type Employee {
-        id: ID!
         username: String,
         gender: String,
         email: String,
@@ -15,15 +21,22 @@ const typeDefs = gql`
     }
 `
 
+const dataSources = () => ({
+    employeeService: new EmployeeService()
+})
+
 const resolvers = {
     Query: {
-        employees: () => {
-            return employees
+        employees: (parent, args, { dataSources }, info) => {
+            return dataSources.employeeService.getEmployees(args)
+        },
+        findEmployeeByEmail: (parent, { email }, { dataSources }, info) => {
+            return dataSources.employeeService.getEmployeeByEmail(email);
         }
     }
 }
 
-const gqlServer = new ApolloServer({ typeDefs, resolvers });
+const gqlServer = new ApolloServer({ typeDefs, resolvers, dataSources });
 
 gqlServer.listen({ port: process.env.port || 4000 })
     .then(({ url }) => console.log(`graphQL server started on ${url}`))

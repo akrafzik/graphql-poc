@@ -9,7 +9,8 @@
     "@jsdevtools/static-mock-data": "^5.0.1",
     "apollo-datasource": "^3.3.2",
     "apollo-server": "^3.9.0",
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "start": "nodemon index.js"
