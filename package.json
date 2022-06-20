@@ -6,6 +6,8 @@
   "author": "Alec Krafzik",
   "license": "MIT",
   "dependencies": {
+    "@jsdevtools/static-mock-data": "^5.0.1",
+    "apollo-datasource": "^3.3.2",
     "apollo-server": "^3.9.0",
     "graphql": "^16.5.0"
   },
