@@ -1,0 +1,15 @@
+{
+  "name": "graphql-poc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/akrafzik/graphql-poc.git",
+  "author": "Alec Krafzik",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.9.0",
+    "graphql": "^16.5.0"
+  },
+  "scripts": {
+    "start": "nodemon index.js"
+  }
+}
